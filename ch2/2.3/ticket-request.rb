@@ -23,7 +23,7 @@ print "Information desired: "
 request = gets.chomp
 
 if ticket.respond_to?(request)
-  puts ticket.send(request)
+  puts ticket.__send__(request)
 else
   puts "No such information is available."
 end
