@@ -13,3 +13,6 @@ binding.pry
 # for the method, and will therefore protect the original object
 # You can also call .freeze on an object (or reference to that object)
 # which will permanently prevent it from undergoing change
+# Finally, .clone is like .dup, except that
+# if you .clone a frozen object, the object will also be frozen
+# whereas if you .dup a frozen object, the duplicate will NOT be frozen
