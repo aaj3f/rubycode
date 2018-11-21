@@ -1,16 +1,16 @@
 require "pry"
 
 class C
-  def set_v
-    @v = "I am an instance variale and I belong to any instance"
-  end
-
+  puts "Just inside class definition block. Here's self:"
+  p self
+  @v = "I am an instance variable at the top level of a class body."
+  puts "And here's the instance variable @v, belonging to #{self}:"
+  p @v
   def show_var
-    puts @v
-  end
-
-  def self.set_v
-    @v = "I am a class variable and I belong to C."
+    puts "Inside an instance method definition block. Here's self:"
+    p self
+    puts "And here's the instance variable @v, belonging to #{self}:"
+    p @v
   end
 end
 
