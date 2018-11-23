@@ -1,26 +1,31 @@
 require "pry"
 
 class Ticket
-  attr_accessor :venue, :date
-  def initialize(venue, date)
+  attr_accessor :venue, :date, :name
+  def initialize(name, venue, date)
+    self.name = name
     self.venue = venue
     self.date = date
   end
   def ===(other_ticket)
-    self.venue == other_ticket.venue
+    self.date == other_ticket.date
+  end
+  class TicketComparer
+    def self.compare(name1, *names)
+      #binding.pry
+      puts "#{name1.name} is for an event on #{name1.date}, and so is..."
+      names.each do |n|
+        case name1
+        when n
+          puts "#{n.name}!"
+        end
+      end
+    end
   end
 end
 
-t1 = Ticket.new("Town Hall", "11-21-2018")
-t2 = Ticket.new("Grand Theater", "11-21-2018")
-t3 = Ticket.new("Town Hall", "12-25-2018")
+t1 = Ticket.new("ticket1", "Town Hall", "11-21-2018")
+t2 = Ticket.new("ticket2", "Grand Theater", "11-21-2018")
+t3 = Ticket.new("ticket3", "Town Hall", "12-25-2018")
 
-puts "Ticket1 is for #{t1.venue}, and so is..."
-case t1
-when t2
-  puts "Ticket2!"
-when t3
-  puts "Ticket3!"
-else
-  puts "... well, actually none of them."
-end
+Ticket::TicketComparer.compare(t1, t2, t3)
