@@ -12,13 +12,12 @@ class Ticket
   end
   class TicketComparer
     def self.compare(name1, *names)
-      #binding.pry
+      correct_names = names.select {|n| n === name1 }
       puts "#{name1.name} is for an event on #{name1.date}, and so is..."
-      case name1
-      when *names
-        names.each {|n| puts "#{n.name}!" if n === name1}
+      if correct_names == ([] || nil)
+        puts "...actually, none of them."
       else
-        puts "actually, none of them..."
+        correct_names.each {|n| puts "#{n.name}!"}
       end
     end
   end
