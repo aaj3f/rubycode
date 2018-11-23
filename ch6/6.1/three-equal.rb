@@ -14,11 +14,11 @@ class Ticket
     def self.compare(name1, *names)
       #binding.pry
       puts "#{name1.name} is for an event on #{name1.date}, and so is..."
-      names.each do |n|
-        case name1
-        when n
-          puts "#{n.name}!"
-        end
+      case name1
+      when *names
+        names.each {|n| puts "#{n.name}!" if n === name1}
+      else
+        puts "actually, none of them..."
       end
     end
   end
